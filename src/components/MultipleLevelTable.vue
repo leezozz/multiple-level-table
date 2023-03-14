@@ -245,12 +245,12 @@ const handleClick = () => {
       }
 
       .part-column-class > .cell{
-        display: flex;
-        align-items: center;
+        padding-right: 0;
       }
       // 自定义展开、收起图标
       .el-table__expand-icon > .el-icon {
-
+        position: absolute;
+        right: 1px;
         &::before {
           content: "";
           background: url('/src/assets/svg/unfold.svg') no-repeat center;
@@ -279,6 +279,8 @@ const handleClick = () => {
       }
 
       .el-table__expand-icon--expanded .el-icon {
+        position: absolute;
+        right: 1px;
 
         &::before {
           content: "";
