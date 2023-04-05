@@ -161,6 +161,14 @@ const handleSelect = (row: any, isSelected: any) => {
       traverseData(props.tableData).some((val: any) => {
         if (item === val.id) {
           multipleTableRef.value!.toggleRowSelection(val, true)
+          // 通过toggleRowSelection勾选的，他的子级也会默认被勾选上。这里递归遍历所有子级，判断，子级不包含在selectListId.value中就取消勾选。
+          if(val.children) {
+            traverseData(val.children).forEach((childrenItem: any) => {
+              if(selectListId.value.every((val: any) => val !== childrenItem.id)) {
+                multipleTableRef.value!.toggleRowSelection(childrenItem, false)
+              }
+            })
+          }
         }
       })
     })
